@@ -1,2 +1,6 @@
 # mountaineerbr.github.io
-personal website
+
+__Please visit my blog__
+
+https://mountaineerbr.github.io/
+
