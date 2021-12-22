@@ -146,6 +146,7 @@ linux-zen
 linux-zen-headers
 lm_sensors
 lynx
+md4c 	#markdown with github flavour
 meld
 mesa 	#NVIDIA
 mesa-demos 	#NVIDIA
@@ -161,8 +162,9 @@ networkmanager
 nm-connection-editor
 noto-fonts-emoji
 ntfs-3g
-nvidia	#NVIDIA#OR#nvidia-dkms
-nvidia-lts	#NVIDIA
+nvidia	#NVIDIA#ORecnvidia-dkms
+nvidia-lts	#NVIDIA (use with linux-lts)
+nvidia-prime #NVIDIA
 nvidia-settings	#NVIDIA
 nvidia-utils	#NVIDIA
 opencl-nvidia	#NVIDIA
@@ -179,6 +181,7 @@ pulseaudio-bluetooth
 pulseaudio-equalizer
 python
 python2
+qpdf
 qrencode
 r
 rsync
@@ -247,7 +250,9 @@ ack
 acpi_call 	#NVIDIA
 acpi 	#NVIDIA
 acpid 	#NVIDIA
+age 	#file cryptography from google
 alsa-tools
+angband #game
 arch-audit
 aria2
 arj
@@ -256,6 +261,7 @@ asciiquarium
 aspell-pt
 audacity
 awesome-terminal-fonts
+bat
 bbswitch 	#NVIDIA#OR#bbswitch-dkms
 bitcoin-cli
 bitcoin-daemon
@@ -267,6 +273,7 @@ bumblebee	#NVIDIA
 busybox
 cabextract
 canto-curses
+catdoc 	#.doc documents to txt
 catfish
 clementine
 cmatrix
@@ -279,6 +286,8 @@ dateutils
 diffstat
 dina-font
 dmenu
+docx2txt
+dopewars
 dos2unix
 dzen2
 edbrowse
@@ -292,6 +301,7 @@ fish
 fortune-mod
 fractal
 fuseiso
+gimagereader-gtk
 git-lfs
 gpick
 gtk-engine-murrine
@@ -304,6 +314,7 @@ lhasa
 lolcat
 lrzip
 ls++
+lsd
 man-pages-pt_br
 monero
 monero-gui
@@ -345,9 +356,11 @@ redshift
 #reflector
 ripgrep
 rofimoji
+sc #cli spreadsheet
 screenkey
 shellcheck
 simplescreenrecorder
+smem  #memory statistics
 snes9x-gtk
 speedcrunch
 speedtest-cli
@@ -358,6 +371,9 @@ sxiv
 tamsyn-font
 tcsh
 terminus-font
+tesseract
+tesseract-data-eng
+tesseract-data-por
 the_silver_searcher
 thefuck
 tinyxml2
@@ -420,6 +436,7 @@ zsh-syntax-highlighting
 
 #AUR
 AUR=(
+abricotine 	#md editor
 ansifilter
 ansiweather
 arc-gtk-theme
@@ -433,6 +450,9 @@ cdm-git
 clustal-omega
 clustalw
 cointop
+csview-git
+csvkit  #csv tools
+eaglemode #file manager
 edex-ui-git
 emmet-vim-git
 figlet-fonts
@@ -454,6 +474,7 @@ nocturnal-themes-git
 nodejs-markdownlint-cli
 numix-icon-theme-pack-git
 obsidian-icon-theme
+oleo #cli spreadsheet
 oneko
 #optimus-manager 	#NVIDIA
 #optimus-manager-qt 	#NVIDIA
@@ -466,6 +487,7 @@ pipes.sh
 pylote-git
 python-base58
 ruby-mdless
+sc-im
 screamingfrogseospider
 searchmonkey-gtk
 seaview
@@ -492,10 +514,12 @@ ubuntu-mate-themes
 ubuntu-themes
 unimatrix-git
 vanitygen-git
+ventoy-bin  #iso burner
 vifm-colors-git
 vim-badwolf
 vim-colorschemes
 vim-eunuch
+vim-markdown-git #plasticboy mardown highlight
 vlc-media-context
 vlc-pause-click-plugin
 websocat
@@ -506,7 +530,9 @@ xcursor-oxygen
 xubuntu-artwork
 xzoom
 yay
+yt-dlp
 zuki-themes
+xsv 	#csv toolbox
 
 )
 
@@ -536,30 +562,35 @@ hal
 
 )
 
+#MULTILIB
+WINE=(
+wine  #multilib
+wine-gecko  #community
+wine-mono  #community
+winetricks  #multilib
+lib32-mpg123  #multilib
+lib32-giflib  #multilib
+lib32-libpng  #multilib
+lib32-gnutls  #multilib
+lib32-gst-plugins-base  #multilib
+lib32-gst-plugins-good  #multilib
+samba  #extra
+#lib32-gst-plugins-bad  #aur
+#lib32-gst-plugins-ugly  #aur
+lib32-nvidia-utils  #multilib
+lib32-libxslt  #multilib
+vkd3d  #community
+lib32-vkd3d  #multilib
+dosbox  #community
+lib32-vulkan-validation-layers  #multilib
 
-#NOTES
-#Many packages are related to NVIDIA card: bumblebee, primus, pvkrun etc
-#Only if necessary: extra/xorg-drivers
-#Don't install the whole group xorg
-#If using non-standard linux kernels (such as linux-zen):
-#    virtualbox-host-modules-arch -> virtualbox-host-dkms
-#    nvidia -> nvidia-dkms
+)
 
-
-#ARCH INSTALL SCRIPTS & TIPS
-#extra/arch-install-scripts
-#https://github.com/helmuthdu/aui
-#https://github.com/Earnestly/pkgbuilds/blob/master/system-config/PKGBUILD
-#https://raw.githubusercontent.com/tom5760/arch-install/master/arch_install.sh
-#https://raw.githubusercontent.com/ctjhoa/arch-install-script/master/install.sh
-#https://raw.githubusercontent.com/krushndayshmookh/krushn-arch/master/install.sh
-#https://raw.githubusercontent.com/krushndayshmookh/krushn-arch/master/post-install.sh
-#https://disconnected.systems/blog/archlinux-installer/
-#https://bbs.archlinux.org/viewtopic.php?id=219570
-
-
+#consider all the software listed at:
+#http://suckless.org/rocks/
 
 #Print stats of my lists
-pkgstat() { printf %s\\n core ${#CORE[@]} extra ${#EXTRA[@]} community ${#COMMUNITY[@]} aur ${#AUR[@]} total $((${#CORE[@]}+${#EXTRA[@]}+${#COMMUNITY[@]}+${#AUR[@]})) | pr -aT2 -w25 ;}
+pkgstat() { printf %s\\n core ${#CORE[@]} extra ${#EXTRA[@]} community ${#COMMUNITY[@]} aur ${#AUR[@]} multilib ${#WINE[@]} total $((${#CORE[@]}+${#EXTRA[@]}+${#COMMUNITY[@]}+${#AUR[@]}+${#WINE[@]})) | pr -aT2 -w25 ;}
+pkgstat
 
 
